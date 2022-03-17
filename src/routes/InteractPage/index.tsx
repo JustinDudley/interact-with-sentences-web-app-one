@@ -77,23 +77,23 @@ export const InteractPage: React.FC = () => {
                // second conditionals keeps app from breaking if no response from BE:
                tableau.document && (
                   <div>
-                     <div style={{ marginBottom: '8px' }}>
+                     <div style={{ marginBottom: '10px' }}>
                         <span style={{ fontWeight: 'bold' }}>
                            letter-pair:{' '}
                         </span>
                         <span>{tableau.document.letter_pair}</span>
                      </div>
-                     <div style={{ marginBottom: '8px' }}>
+                     <div style={{ marginBottom: '10px' }}>
                         <span style={{ fontWeight: 'bold' }}>
                            starter-sentence:{' '}
                         </span>
                         <span>{tableau.document.starter_sentence}</span>
                      </div>
-                     <div style={{ marginBottom: '8px' }}>
+                     <div style={{ marginBottom: '10px' }}>
                         <span style={{ fontWeight: 'bold' }}>synopsis: </span>
                         <span>{tableau.document.elaboration.synopsis}</span>
                      </div>{' '}
-                     <div style={{ marginBottom: '8px' }}>
+                     <div style={{ marginBottom: '10px' }}>
                         <span style={{ fontWeight: 'bold' }}>backstory: </span>
                         <span>
                            {tableau.document.elaboration.backstory.story}

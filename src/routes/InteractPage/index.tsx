@@ -26,7 +26,7 @@ export const InteractPage: React.FC = () => {
    });
 
    const formik = useFormik({
-      initialValues: { letterPair: 'AB' },
+      initialValues: { letterPair: letterPair },
       validationSchema: yupSchemaValidator,
       onSubmit: (value) => {
          const pairUpper = value.letterPair.toUpperCase();

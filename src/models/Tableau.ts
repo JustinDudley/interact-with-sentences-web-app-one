@@ -7,8 +7,8 @@ export interface Document {
    starter_sentence: string;
    images: Images;
    elaboration: Elaboration;
-   group?: [string];
-   comments?: [string];
+   group?: string[];
+   comments?: string[];
    word_resources?: WordResources;
    memory_tags: MemoryTags;
 }

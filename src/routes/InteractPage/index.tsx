@@ -12,6 +12,13 @@ export const InteractPage: React.FC = () => {
    });
    const [letterPair, setLetterPair] = useState('AB');
 
+   const fetchTableau = (letterPair: any) => {
+      // need try-catch?
+      fetch(`http://localhost:8000/api/tableau/${letterPair}`)
+         .then((res) => res.json())
+         .then((tableau) => setTableau(tableau));
+   };
+
    const yupSchemaValidator = yup.object().shape({
       letterPair: yup
          .string()
@@ -25,17 +32,12 @@ export const InteractPage: React.FC = () => {
       onSubmit: (value) => {
          const pairUpper = value.letterPair.toUpperCase();
          setLetterPair(pairUpper);
-         fetch(`http://localhost:8000/api/tableau/${pairUpper}`)
-            .then((res) => res.json())
-            .then((jsObj) => setTableau(jsObj));
+         fetchTableau(pairUpper);
       },
    });
 
    useEffect(() => {
-      // need try-catch
-      fetch(`http://localhost:8000/api/tableau/AB`)
-         .then((res) => res.json())
-         .then((jsObj) => setTableau(jsObj));
+      fetchTableau('AB');
    }, []);
 
    return (
@@ -66,9 +68,14 @@ export const InteractPage: React.FC = () => {
                style={{ width: '50px', color: 'green', fontWeight: 'bold' }}
             />
             <button type="submit">Submit</button>
-            {formik.errors.letterPair && <div>{formik.errors.letterPair}</div>}
+            <div style={{ height: '1.5rem', color: 'red', fontSize: '0.8rem' }}>
+               {formik.errors.letterPair}
+            </div>
          </form>
-         <div>{tableau && tableau.document.elaboration.synopsis}</div>
+         <div style={{ border: '1px solid purple', padding: '10px' }}>
+            {/* keeps app from breaking if no response from BE: */}
+            {tableau.document && tableau.document.elaboration.synopsis}
+         </div>
       </div>
    );
 };

@@ -3,13 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as yup from 'yup';
+import { Tableau } from '../../models/Tableau';
 
 // import styles from './style.module.css';
 
 export const InteractPage: React.FC = () => {
-   const [tableau, setTableau] = useState({
-      document: { elaboration: { synopsis: '' } },
-   });
+   const [tableau, setTableau] = useState<Tableau | null>(null);
    const [letterPair, setLetterPair] = useState('AB');
 
    const fetchTableau = (letterPair: any) => {
@@ -73,8 +72,11 @@ export const InteractPage: React.FC = () => {
             </div>
          </form>
          <div style={{ border: '1px solid purple', padding: '10px' }}>
-            {/* conditional keeps app from breaking if no response from BE: */}
-            {tableau.document && tableau.document.elaboration.synopsis}
+            {/* first conditional allows program to compile, and MAYBE keeps app from breaking if no response from BE: */}
+            {tableau &&
+               // second conditionals keeps app from breaking if no response from BE:
+               tableau.document &&
+               tableau.document.elaboration.synopsis}
          </div>
       </div>
    );

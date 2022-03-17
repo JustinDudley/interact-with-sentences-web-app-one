@@ -15,7 +15,7 @@ export const InteractPage: React.FC = () => {
    const yupSchemaValidator = yup.object().shape({
       letterPair: yup
          .string()
-         .required('letterPair is a required field')
+         .required('letter pair must be exactly 2 letters long')
          .length(2, 'letter pair must be exactly 2 letters long'),
    });
 
@@ -39,26 +39,36 @@ export const InteractPage: React.FC = () => {
    }, []);
 
    return (
-      <>
-         <div> Hello from INTERACT page</div>
-         <div>{`current letter-pair: ${letterPair}`}</div>
-         <div>{tableau && tableau.document.elaboration.synopsis}</div>
-         <nav>
-            <Link to="/">back to HOME page</Link>
-         </nav>
-         <div> --- </div>
-         <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="letterPair">your letter pair</label>
+      <div style={{ padding: '15px' }}>
+         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div> INTERACT page</div>
+            <nav>
+               <Link to="/">back to HOME page</Link>
+            </nav>
+         </div>
+         <form
+            onSubmit={formik.handleSubmit}
+            style={{ padding: '40px 0 20px' }}
+         >
+            <div>
+               <span>current letter-pair: </span>
+               <span style={{ color: 'green', fontWeight: 'bold' }}>
+                  {letterPair}
+               </span>
+            </div>
+            <label htmlFor="letterPair">Enter a new letter-pair: </label>
             <input
                id="letterPair"
                name="letterPair"
                type="text"
                onChange={formik.handleChange}
                value={formik.values.letterPair.toUpperCase()}
+               style={{ width: '50px', color: 'green', fontWeight: 'bold' }}
             />
-            {formik.errors.letterPair && <div>{formik.errors.letterPair}</div>}
             <button type="submit">Submit</button>
+            {formik.errors.letterPair && <div>{formik.errors.letterPair}</div>}
          </form>
-      </>
+         <div>{tableau && tableau.document.elaboration.synopsis}</div>
+      </div>
    );
 };

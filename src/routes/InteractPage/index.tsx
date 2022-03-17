@@ -10,7 +10,7 @@ export const InteractPage: React.FC = () => {
    const [tableau, setTableau] = useState({
       document: { elaboration: { synopsis: '' } },
    });
-   const [letterPair, setLetterPair] = useState('');
+   const [letterPair, setLetterPair] = useState('AB');
 
    const yupSchemaValidator = yup.object().shape({
       letterPair: yup

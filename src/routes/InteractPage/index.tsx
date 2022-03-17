@@ -11,7 +11,7 @@ export const InteractPage: React.FC = () => {
    const [tableau, setTableau] = useState<Tableau | null>(null);
    const [letterPair, setLetterPair] = useState('AB');
 
-   const fetchTableau = (letterPair: any) => {
+   const fetchTableau = (letterPair: string) => {
       // need try-catch?
       fetch(`http://localhost:8000/api/tableau/${letterPair}`)
          .then((res) => res.json())
@@ -29,9 +29,9 @@ export const InteractPage: React.FC = () => {
       initialValues: { letterPair: letterPair },
       validationSchema: yupSchemaValidator,
       onSubmit: (value) => {
-         const pairUpper = value.letterPair.toUpperCase();
-         setLetterPair(pairUpper);
-         fetchTableau(pairUpper);
+         const letterPairUpper = value.letterPair.toUpperCase();
+         setLetterPair(letterPairUpper);
+         fetchTableau(letterPairUpper);
       },
    });
 

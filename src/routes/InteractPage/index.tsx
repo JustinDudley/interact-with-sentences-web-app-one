@@ -73,7 +73,7 @@ export const InteractPage: React.FC = () => {
             </div>
          </form>
          <div style={{ border: '1px solid purple', padding: '10px' }}>
-            {/* keeps app from breaking if no response from BE: */}
+            {/* conditional keeps app from breaking if no response from BE: */}
             {tableau.document && tableau.document.elaboration.synopsis}
          </div>
       </div>

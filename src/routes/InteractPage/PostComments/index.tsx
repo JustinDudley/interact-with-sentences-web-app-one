@@ -19,13 +19,13 @@ export const PostComments: React.FC<{ letterPair: string }> = ({
          });
    };
 
-   const yupSchemaValidator2 = yup.object().shape({
+   const yupSchemaValidator = yup.object().shape({
       comment: yup.string().max(1500, 'Maximum character limit exceeded'),
    });
 
-   const formik2 = useFormik({
+   const formik = useFormik({
       initialValues: { comment: '' },
-      validationSchema: yupSchemaValidator2,
+      validationSchema: yupSchemaValidator,
       onSubmit: (value, { resetForm }) => {
          postComment(value.comment);
          resetForm();
@@ -34,7 +34,7 @@ export const PostComments: React.FC<{ letterPair: string }> = ({
 
    return (
       <div style={{ marginTop: '50px' }}>
-         <form onSubmit={formik2.handleSubmit}>
+         <form onSubmit={formik.handleSubmit}>
             <div style={{ marginBottom: '20px' }}>
                If you would like to comment on this sentence, or suggest a new
                sentence, please write it in the box below. If you would like,
@@ -47,13 +47,13 @@ export const PostComments: React.FC<{ letterPair: string }> = ({
                id="comment"
                name="comment"
                type="text"
-               onChange={formik2.handleChange}
-               value={formik2.values.comment}
+               onChange={formik.handleChange}
+               value={formik.values.comment}
                style={{ width: '150px', color: 'blue', fontWeight: 'bold' }}
             />
             <button type="submit">Submit</button>
             <div style={{ height: '1.5rem', color: 'red', fontSize: '0.8rem' }}>
-               {formik2.errors.comment}
+               {formik.errors.comment}
             </div>
          </form>
       </div>

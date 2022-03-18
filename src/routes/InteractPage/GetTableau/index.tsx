@@ -17,16 +17,16 @@ export const GetTableau: React.FC<{
          .then((tableau) => setTableau(tableau));
    };
 
-   const yupSchemaValidator1 = yup.object().shape({
+   const yupSchemaValidator = yup.object().shape({
       letterPair: yup
          .string()
          .required('letter pair must be exactly 2 letters long')
          .length(2, 'letter pair must be exactly 2 letters long'),
    });
 
-   const formik1 = useFormik({
+   const formik = useFormik({
       initialValues: { letterPair: letterPair },
-      validationSchema: yupSchemaValidator1,
+      validationSchema: yupSchemaValidator,
       onSubmit: (value) => {
          const letterPairUpper = value.letterPair.toUpperCase();
          setLetterPair(letterPairUpper);
@@ -41,7 +41,7 @@ export const GetTableau: React.FC<{
    return (
       <>
          <form
-            onSubmit={formik1.handleSubmit}
+            onSubmit={formik.handleSubmit}
             style={{ padding: '40px 0 20px' }}
          >
             <div>
@@ -55,13 +55,13 @@ export const GetTableau: React.FC<{
                id="letterPair"
                name="letterPair"
                type="text"
-               onChange={formik1.handleChange}
-               value={formik1.values.letterPair.toUpperCase()}
+               onChange={formik.handleChange}
+               value={formik.values.letterPair.toUpperCase()}
                style={{ width: '50px', color: 'green', fontWeight: 'bold' }}
             />
             <button type="submit">Submit</button>
             <div style={{ height: '1.5rem', color: 'red', fontSize: '0.8rem' }}>
-               {formik1.errors.letterPair}
+               {formik.errors.letterPair}
             </div>
          </form>
          <div style={{ border: '1px solid purple', padding: '10px' }}>

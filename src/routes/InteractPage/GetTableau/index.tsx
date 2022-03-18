@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import { GetTableauProps } from '../../../models/GetTableau';
+import styles from './style.module.css';
 
 export const GetTableau: React.FC<GetTableauProps> = ({
    tableau,
@@ -40,15 +41,10 @@ export const GetTableau: React.FC<GetTableauProps> = ({
 
    return (
       <>
-         <form
-            onSubmit={formik.handleSubmit}
-            style={{ padding: '40px 0 20px' }}
-         >
+         <form onSubmit={formik.handleSubmit} className={styles.form}>
             <div>
                <span>current letter-pair: </span>
-               <span style={{ color: 'green', fontWeight: 'bold' }}>
-                  {letterPair}
-               </span>
+               <span className={styles.showLetterPair}>{letterPair}</span>
             </div>
             <label htmlFor="letterPair">Enter a new letter-pair: </label>
             <input
@@ -57,38 +53,38 @@ export const GetTableau: React.FC<GetTableauProps> = ({
                type="text"
                onChange={formik.handleChange}
                value={formik.values.letterPair.toUpperCase()}
-               style={{ width: '50px', color: 'green', fontWeight: 'bold' }}
+               className={styles.input}
             />
             <button type="submit">Submit</button>
-            <div style={{ height: '1.5rem', color: 'red', fontSize: '0.8rem' }}>
-               {formik.errors.letterPair}
-            </div>
+            <div className={styles.error}>{formik.errors.letterPair}</div>
          </form>
-         <div style={{ border: '1px solid purple', padding: '10px' }}>
+         <div className={styles.displayTableau}>
             {/* first conditional allows program to compile, and MAYBE keeps app from breaking if no response from BE: */}
             {tableau &&
                // second conditionals keeps app from breaking if no response from BE:
                tableau.document && (
                   <div>
-                     <div style={{ marginBottom: '10px' }}>
-                        <span style={{ fontWeight: 'bold' }}>
-                           letter-pair:{' '}
+                     <div className={styles.tableauItem}>
+                        <span>letter-pair: </span>
+                        <span className={styles.tableauItemFont}>
+                           {tableau.document.letter_pair}
                         </span>
-                        <span>{tableau.document.letter_pair}</span>
                      </div>
-                     <div style={{ marginBottom: '10px' }}>
-                        <span style={{ fontWeight: 'bold' }}>
-                           starter-sentence:{' '}
+                     <div className={styles.tableauItem}>
+                        <span>starter-sentence: </span>
+                        <span className={styles.tableauItemFont}>
+                           {tableau.document.starter_sentence}
                         </span>
-                        <span>{tableau.document.starter_sentence}</span>
                      </div>
-                     <div style={{ marginBottom: '10px' }}>
-                        <span style={{ fontWeight: 'bold' }}>synopsis: </span>
-                        <span>{tableau.document.elaboration.synopsis}</span>
-                     </div>{' '}
-                     <div style={{ marginBottom: '10px' }}>
-                        <span style={{ fontWeight: 'bold' }}>backstory: </span>
-                        <span>
+                     <div className={styles.tableauItem}>
+                        <span>synopsis: </span>
+                        <span className={styles.tableauItemFont}>
+                           {tableau.document.elaboration.synopsis}
+                        </span>
+                     </div>
+                     <div className={styles.tableauItem}>
+                        <span>backstory: </span>
+                        <span className={styles.tableauItemFont}>
                            {tableau.document.elaboration.backstory.story}
                         </span>
                      </div>

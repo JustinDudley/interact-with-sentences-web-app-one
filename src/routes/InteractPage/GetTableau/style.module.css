@@ -1,0 +1,34 @@
+.form {
+   padding: 40px 0 20px;
+}
+
+.showLetterPair {
+   color: green;
+   font-weight: bold;
+}
+
+.input {
+   width: 50px;
+   color: green;
+   font-weight: bold;
+}
+
+.displayTableau {
+   border: 1px solid purple;
+   padding: 10px;
+}
+
+.tableauItem {
+   margin-bottom: 10px;
+   font-weight: bold;
+}
+
+.tableauItemFont {
+   font-weight: normal;
+}
+
+.error {
+   height: 1.5rem;
+   color: red;
+   font-size: 0.8rem;
+}

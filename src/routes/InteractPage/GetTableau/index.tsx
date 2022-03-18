@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { Tableau } from '../../../models/Tableau';
+import { GetTableauProps } from '../../../models/GetTableau';
 
-export const GetTableau: React.FC<{
-   tableau: Tableau | null;
-   setTableau: React.Dispatch<React.SetStateAction<Tableau | null>>;
-   letterPair: string;
-   setLetterPair: React.Dispatch<React.SetStateAction<string>>;
-}> = ({ tableau, setTableau, letterPair, setLetterPair }) => {
+export const GetTableau: React.FC<GetTableauProps> = ({
+   tableau,
+   setTableau,
+   letterPair,
+   setLetterPair,
+}) => {
    const fetchTableau = (letterPair: string) => {
       // need try-catch?
       fetch(`http://localhost:8000/api/tableau/${letterPair}`)

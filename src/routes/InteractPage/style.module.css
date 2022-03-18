@@ -1,3 +1,8 @@
 .interactPage {
    padding: 15px;
 }
+
+.header {
+   display: flex;
+   justify-content: space-between;
+}

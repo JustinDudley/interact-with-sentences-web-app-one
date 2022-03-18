@@ -15,7 +15,7 @@ export const InteractPage: React.FC = () => {
 
    return (
       <div className={styles.interactPage}>
-         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+         <div className={styles.header}>
             <div> INTERACT page</div>
             <nav>
                <Link to="/">back to HOME page</Link>

@@ -1,0 +1,19 @@
+.postComment {
+   margin-top: 50px;
+}
+
+.instructions {
+   margin-bottom: 20px;
+}
+
+.input {
+   width: 150px;
+   color: blue;
+   font-weight: bold;
+}
+
+.error {
+   height: 1.5rem;
+   color: red;
+   font-size: 0.8rem;
+}

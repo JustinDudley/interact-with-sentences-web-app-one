@@ -2,6 +2,8 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
+import styles from './style.module.css';
+
 export const PostComments: React.FC<{ letterPair: string }> = ({
    letterPair,
 }) => {
@@ -33,9 +35,9 @@ export const PostComments: React.FC<{ letterPair: string }> = ({
    });
 
    return (
-      <div style={{ marginTop: '50px' }}>
+      <div className={styles.postComment}>
          <form onSubmit={formik.handleSubmit}>
-            <div style={{ marginBottom: '20px' }}>
+            <div className={styles.instructions}>
                If you would like to comment on this sentence, or suggest a new
                sentence, please write it in the box below. If you would like,
                you can include your email or other identifying tag within the
@@ -49,12 +51,10 @@ export const PostComments: React.FC<{ letterPair: string }> = ({
                type="text"
                onChange={formik.handleChange}
                value={formik.values.comment}
-               style={{ width: '150px', color: 'blue', fontWeight: 'bold' }}
+               className={styles.input}
             />
             <button type="submit">Submit</button>
-            <div style={{ height: '1.5rem', color: 'red', fontSize: '0.8rem' }}>
-               {formik.errors.comment}
-            </div>
+            <div className={styles.error}>{formik.errors.comment}</div>
          </form>
       </div>
    );

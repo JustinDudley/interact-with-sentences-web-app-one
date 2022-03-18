@@ -5,6 +5,8 @@ import { Tableau } from '../../models/Tableau';
 import { GetTableau } from './GetTableau';
 import { PostComments } from './PostComments';
 
+import styles from './style.module.css';
+
 // import styles from './style.module.css';
 
 export const InteractPage: React.FC = () => {
@@ -12,7 +14,7 @@ export const InteractPage: React.FC = () => {
    const [letterPair, setLetterPair] = useState('AB');
 
    return (
-      <div style={{ padding: '15px' }}>
+      <div className={styles.interactPage}>
          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div> INTERACT page</div>
             <nav>
